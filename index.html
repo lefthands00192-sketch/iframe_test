@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <!-- 휴대폰 화면 폭에 맞추고, 확대된 채로 열리지 않게 함 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 브라우저 탭에 보이는 제목 (원하는 이름으로 바꿔도 됨) -->
+  <title>지구과학 보충 학습 인증</title>
+  <style>
+    /* 페이지 여백을 없애고, 페이지 자체는 스크롤되지 않게 함
+       (스크롤은 웹앱 안에서만 일어나도록 해서 스크롤이 두 겹으로 생기는 것을 막음) */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      /* 웹앱이 뜨기 전 잠깐 보이는 배경을 웹앱 배경색과 맞춤 (흰 화면 번쩍임 방지) */
+      background: #0F172A;
+    }
+
+    /* 웹앱을 화면 전체에 꽉 채움 */
+    iframe {
+      display: block;
+      border: 0;
+      width: 100%;
+      height: 100vh;   /* 오래된 브라우저용 */
+      height: 100dvh;  /* 휴대폰 주소창이 나타나고 사라져도 아래쪽이 잘리지 않게 함 */
+    }
+  </style>
+</head>
+<body>
+  <!-- src에 웹앱 배포 주소(/exec로 끝나는 주소)를 넣기
+       ※ 배포 주소 말고 다른 정보(아이디, 시트 주소 등)는 절대 넣지 말 것 -->
+  <iframe
+    src="여기에_웹앱_배포주소_붙여넣기"
+    title="지구과학 보충 학습 인증"
+    allow="fullscreen">
+  </iframe>
+</body>
+</html>
