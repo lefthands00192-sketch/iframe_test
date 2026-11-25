@@ -5,7 +5,7 @@
   <!-- 휴대폰 화면 폭에 맞추고, 확대된 채로 열리지 않게 함 -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- 브라우저 탭에 보이는 제목 (원하는 이름으로 바꿔도 됨) -->
-  <title>지구과학 보충 학습 인증</title>
+  <title>교과 학습 공간</title>
   <style>
     /* 페이지 여백을 없애고, 페이지 자체는 스크롤되지 않게 함
        (스크롤은 웹앱 안에서만 일어나도록 해서 스크롤이 두 겹으로 생기는 것을 막음) */
@@ -28,7 +28,20 @@
     }
   </style>
 </head>
-  <title>교과 학습 공간</title>
+  <script>
+  // 웹앱이 알려 주는 제목으로 이 탭의 제목을 바꿈 (예: '지구과학 학습 공간')
+  //  · 구글 웹앱(…googleusercontent.com)에서 온 알림만 받음 → 다른 사이트가 제목을 못 바꿈
+  //  · 받은 제목은 글자로만 씀 (60자까지)
+  window.addEventListener('message', function (e) {
+    var host = '';
+    try { host = new URL(e.origin).hostname; } catch (err) { return; }   // 출처가 이상하면 무시
+    if (!/\.googleusercontent\.com$/.test(host)) return;
+    var d = e.data;
+    if (d && d.type === 'app-title' && typeof d.title === 'string' && d.title.trim()) {
+      document.title = d.title.trim().slice(0, 60);
+    }
+  });
+</script>
 <body>
   <!-- src에 웹앱 배포 주소(/exec로 끝나는 주소)를 넣기
        ※ 배포 주소 말고 다른 정보(아이디, 시트 주소 등)는 절대 넣지 말 것 -->
